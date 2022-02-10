@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+/packages
+/.vs/OnnxRuntimeResNet/v16
+/Debug
+/OnnxRuntimeResNet/Debug
