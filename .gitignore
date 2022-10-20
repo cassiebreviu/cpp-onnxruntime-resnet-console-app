@@ -34,3 +34,6 @@
 /.vs/OnnxRuntimeResNet/v16
 /Debug
 /OnnxRuntimeResNet/Debug
+/OnnxRuntimeResNet/x64/Debug
+/.vs/OnnxRuntimeResNet
+/x64/Debug

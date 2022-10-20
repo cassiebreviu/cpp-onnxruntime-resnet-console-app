@@ -1,12 +1,10 @@
 #pragma once
-#include <opencv2/imgproc/imgproc.hpp>
-
-using namespace std;
+#include "opencv2/imgproc.hpp"
 
 class Helpers
 {
 public:
-	static vector<float> loadImage;
-	static vector<string> loadLabels;
+	static std::vector<float> loadImage;
+	static std::vector<std::string> loadLabels;
 };
 
