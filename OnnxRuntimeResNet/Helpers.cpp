@@ -29,7 +29,7 @@ static std::vector<float> loadImage(const std::string& filename, int sizeX = 224
     image = image.reshape(1, 1);
 
     // uint_8, [0, 255] -> float, [0, 1]
-    // Normailze number to between 0 and 1
+    // Normalize number to between 0 and 1
     // Convert to vector<float> from cv::Mat.
     std::vector<float> vec;
     image.convertTo(vec, CV_32FC1, 1. / 255);
