@@ -66,12 +66,12 @@ int main()
 
     // define names
     Ort::AllocatorWithDefaultOptions ort_alloc;
-    char* inputName = session.GetInputName(0, ort_alloc);
-    char* outputName = session.GetOutputName(0, ort_alloc);
-    const std::array<const char*, 1> inputNames = { inputName };
-    const std::array<const char*, 1> outputNames = { outputName };
-    ort_alloc.Free(inputName);
-    ort_alloc.Free(outputName);
+    Ort::AllocatedStringPtr inputName = session.GetInputNameAllocated(0, ort_alloc);
+    Ort::AllocatedStringPtr outputName = session.GetOutputNameAllocated(0, ort_alloc);
+    const std::array<const char*, 1> inputNames = { inputName.get()};
+    const std::array<const char*, 1> outputNames = { outputName.get()};
+    inputName.release();
+    outputName.release();
 
 
     // run inference
