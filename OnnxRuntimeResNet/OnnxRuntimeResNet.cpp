@@ -43,8 +43,23 @@ int main()
         return 1;
     }
 
+    // Use CUDA GPU
+    Ort::SessionOptions ort_session_options;
+
+    OrtCUDAProviderOptions options;
+    options.device_id = 0;
+    //options.arena_extend_strategy = 0;
+    //options.gpu_mem_limit = 2 * 1024 * 1024 * 1024;
+    //options.cudnn_conv_algo_search = OrtCudnnConvAlgoSearchExhaustive;
+    //options.do_copy_in_default_stream = 1;
+    
+    OrtSessionOptionsAppendExecutionProvider_CUDA(ort_session_options, options.device_id);
+
     // create session
-    session = Ort::Session(env, modelPath, Ort::SessionOptions{ nullptr });
+    session = Ort::Session(env, modelPath, ort_session_options);
+
+    // Use CPU
+    //session = Ort::Session(env, modelPath, Ort::SessionOptions{ nullptr });
 
     // define shape
     const std::array<int64_t, 4> inputShape = { 1, numChannels, height, width };
